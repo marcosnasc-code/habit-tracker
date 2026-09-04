@@ -12,7 +12,7 @@ Route::get('/teste', function () {
     return 'Teste Rotas Laravel';
 });
 
-Route::get('/rotaController', [SiteController::class, 'index'])->name('home');
+//Route::get('/rotaController', [SiteController::class, 'index'])->name('home');
 
 // Rota de Login
 Route::get('/login', [LoginController::class, 'login'])->name('login');
@@ -20,5 +20,7 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 // Rota de Autenticação
 Route::post('/login', [LoginController::class, 'authenticate']);
 
-// Rota de Logout
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/dashboard', [SiteController::class, 'dashboard'])->name('dashboard');
+});
