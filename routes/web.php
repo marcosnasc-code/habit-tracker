@@ -18,7 +18,7 @@ Route::get('/teste', function () {
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 
 // Rota de Autenticação
-Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
 
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

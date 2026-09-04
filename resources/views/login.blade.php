@@ -44,9 +44,6 @@
                         placeholder="seu@email.com"
                         class="rounded-lg border border-zinc-200 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none ring-emerald-500/40 placeholder:text-zinc-400 focus:border-emerald-500 focus:ring-2 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:placeholder:text-zinc-500"
                     >
-                    @error('email')
-                        <p class="text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
-                    @enderror
                 </div>
 
                 <div class="flex flex-col gap-1.5">
@@ -60,9 +57,6 @@
                         placeholder="••••••••"
                         class="rounded-lg border border-zinc-200 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none ring-emerald-500/40 placeholder:text-zinc-400 focus:border-emerald-500 focus:ring-2 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:placeholder:text-zinc-500"
                     >
-                    @error('password')
-                        <p class="text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
-                    @enderror
                 </div>
 
                 <button
@@ -71,13 +65,10 @@
                 >
                     Confirmar login
                 </button>
-            </form>
-
-            <div class="flex flex-col gap-2">
-                @error('email')
+                @error('credentials')
                     <p class="text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                 @enderror
-            </div>
+            </form>
 
             <a
                 href="{{ url('/rotaController') }}"
