@@ -46,4 +46,19 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    // Relação com a tabela de habilidades
+    public function habits(): HasMany
+    {
+        return $this->hasMany (Habit::class);
+    }
+
+    // Relação com a tabela de logs de habilidades
+    public function habitLogs(): HasMany
+    {
+        return $this->hasMany (HabitLog::class);
+    }
+
+
 }
