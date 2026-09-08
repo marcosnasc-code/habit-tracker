@@ -24,7 +24,7 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard');
         }
 
-        return redirect()->route('authenticate')->withErrors([
+        return redirect()->route('login')->withErrors([
             'credentials' => 'Email ou senha inválidos',
         ])->onlyInput('email');
     }
