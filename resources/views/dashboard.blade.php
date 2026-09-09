@@ -148,9 +148,17 @@
             </section>
 
             <section class="flex flex-col gap-3">
-                <div class="flex items-center justify-between gap-3">
+                <div class="flex flex-wrap items-center justify-between gap-3">
                     <h2 class="text-base font-semibold">Repositories</h2>
-                    <span class="text-xs text-zinc-500 dark:text-zinc-400">{{ count($habits) }} hábitos</span>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs text-zinc-500 dark:text-zinc-400">{{ count($habits) }} hábitos</span>
+                        <a
+                            href="{{ route('habits.create') }}"
+                            class="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"
+                        >
+                            Cadastrar hábito
+                        </a>
+                    </div>
                 </div>
 
                 <div class="grid gap-4 sm:grid-cols-2">

@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HabitController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,4 +28,8 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [SiteController::class, 'dashboard'])->name('dashboard');
+
+    // Rota de criação de hábito
+    Route::get('dashboard/habits/create', [HabitController::class, 'create'])->name('habits.create');
+    Route::post('dashboard/habits', [HabitController::class, 'store'])->name('habits.store');
 });
