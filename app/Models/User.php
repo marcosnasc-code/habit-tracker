@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -47,18 +48,13 @@ class User extends Authenticatable
         ];
     }
 
-
-    // Relação com a tabela de habilidades
     public function habits(): HasMany
     {
-        return $this->hasMany (Habit::class);
+        return $this->hasMany(Habit::class);
     }
 
-    // Relação com a tabela de logs de habilidades
     public function habitLogs(): HasMany
     {
-        return $this->hasMany (HabitLog::class);
+        return $this->hasMany(HabitLog::class);
     }
-
-
 }

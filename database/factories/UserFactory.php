@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Habit;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -28,5 +29,22 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'password' => static::$password ??= Hash::make('password'),
         ];
+    }
+
+    /**
+     * Attach a fixed set of habits to the user.
+     */
+    public function withHabits(int $count = 4): static
+    {
+        $habits = array_slice(HabitFactory::DEFAULT_HABITS, 0, $count);
+
+        return $this->has(
+            Habit::factory()
+                ->count(count($habits))
+                ->sequence(...array_map(
+                    fn (string $name): array => ['name' => $name],
+                    $habits,
+                ))
+        );
     }
 }

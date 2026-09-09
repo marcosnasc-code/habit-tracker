@@ -2,23 +2,30 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Habit extends Model
 {
+    /** @use HasFactory<HabitFactory> */
+    use HasFactory;
+
     protected $fillable = [
         'user_id',
         'name',
     ];
 
     // Relação com a tabela de usuários
-    public function user(): BelongsTo{
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
     // Relação com a tabela de logs de habilidades
     public function habitLogs(): HasMany
     {
-        return $this->hasMany (HabitLog::class);
+        return $this->hasMany(HabitLog::class);
     }
 }
