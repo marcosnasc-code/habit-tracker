@@ -21,6 +21,6 @@ class HabitController extends Controller
 
         $request->user()->habits()->create($validated);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success', 'Hábito criado com sucesso');
     }
 }

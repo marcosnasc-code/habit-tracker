@@ -115,6 +115,12 @@
         </aside>
 
         <div class="flex min-w-0 flex-col gap-6">
+            @session('success')
+                <p class="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-300">
+                    {{ $value }}
+                </p>
+            @endsession
+
             <section class="rounded-lg border border-zinc-300 bg-white p-4 dark:border-zinc-800 dark:bg-[#0d1117]">
                 <div class="mb-3 flex flex-wrap items-end justify-between gap-2">
                     <h2 class="text-sm font-semibold">
