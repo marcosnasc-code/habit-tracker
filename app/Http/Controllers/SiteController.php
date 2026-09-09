@@ -7,22 +7,12 @@ class SiteController extends Controller
     //
     public function index()
     {
-        $nome = auth()->user()?->name ?? 'Marcos';
-        $habits = ['Programar', 'Estudar', 'Jogar'];
-
-        // return view('dashboard', [
-        //    'nome' => $nome,
-        //    'habits' => $habits,
-        // ]);
-
-        return view('rotashome', compact('nome', 'habits'));
+        return view('rotashome');
     }
 
     public function dashboard()
     {
-        $nome = auth()->user()?->name ?? 'Marcos';
-        $habits = ['Programar', 'Estudar', 'Jogar'];
-
-        return view('dashboard', compact('nome', 'habits'));
+        $habits = auth()->user()->habits->pluck('name')->toArray();
+        return view('dashboard', compact('habits'));
     }
 }
